@@ -1,64 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#121212">
 
-    <ImageView
-        android:id="@+id/imgUser"
-        android:src="@mipmap/ic_logo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/circle_bg"
-        android:clipToOutline="true"
-        android:scaleType="centerCrop"
-        android:padding="0dp" />
-
-    <TextView
-        android:id="@+id/txtMarquee"
+    <!-- CARD CENTRAL -->
+    <LinearLayout
+        android:id="@+id/cardLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="marquee"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:padding="8dp"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
-        android:text="Bem-vindo! Sistema de senhas android. Visando segurança, praticidade e agilidade para o dia a dia."
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#F8F4F4"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+        android:padding="24dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_card"
+        android:layout_centerInParent="true">
 
+        <!-- FOTO DO USUÁRIO -->
+        <ImageView
+            android:id="@+id/imgUser"
+            android:src="@mipmap/ic_logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/circle_bg"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp" />
 
-    <EditText
-        android:id="@+id/edtUser"
-        android:hint="Usuário"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName" />
+        <!-- TEXTO ROLANDO -->
+        <TextView
+            android:id="@+id/txtMarquee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bem-vindo! Sistema de senhas Android — Segurança, praticidade e organização para o dia a dia."
+            android:textColor="#EEEEEE"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:scrollHorizontally="true"
+            android:paddingBottom="20dp" />
 
-    <EditText
-        android:id="@+id/edtPass"
-        android:hint="Senha"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp" />
+        <!-- USUÁRIO -->
+        <EditText
+            android:id="@+id/edtUser"
+            android:hint="Usuário"
+            android:background="@drawable/bg_input"
+            android:padding="12dp"
+            android:textColor="#fff"
+            android:textColorHint="#bbbbbb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif"
-        android:text="Entrar"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold" />
+        <!-- SENHA -->
+        <EditText
+            android:id="@+id/edtPass"
+            android:hint="Senha"
+            android:background="@drawable/bg_input"
+            android:padding="12dp"
+            android:textColor="#fff"
+            android:textColorHint="#bbbbbb"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
 
-</LinearLayout>
+        <!-- BOTÃO -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="Entrar"
+            android:background="@drawable/bg_button"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>
