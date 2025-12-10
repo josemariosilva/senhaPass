@@ -29,6 +29,7 @@ public class PasswordListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         btnAdd = findViewById(R.id.btnAdd);
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         carregarSenhas();
@@ -46,13 +47,11 @@ public class PasswordListActivity extends AppCompatActivity {
 
     private void carregarSenhas() {
 
-        // Agora pega lista direto (sem cursor)
         listaSenhas = db.getAllPasswords();
 
         adapter = new PasswordAdapter(this, listaSenhas);
         recyclerView.setAdapter(adapter);
 
-        // Clique no item para editar
         adapter.setOnItemClickListener(item -> {
             Intent i = new Intent(PasswordListActivity.this, AddEditPasswordActivity.class);
 
@@ -62,5 +61,11 @@ public class PasswordListActivity extends AppCompatActivity {
 
             startActivity(i);
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();  // ← AQUI fecha se o app ficar em segundo plano
     }
 }

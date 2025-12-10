@@ -2,6 +2,7 @@ package com.example.senhapass;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +20,13 @@ public class AddEditPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 🔒 Impede printscreen e app aparecer no multitarefas
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE
+        );
+
         setContentView(R.layout.activity_add_edit_password);
 
         db = new DBHelper(this);
@@ -28,21 +36,21 @@ public class AddEditPasswordActivity extends AppCompatActivity {
         btnSalvar = findViewById(R.id.btnSalvar);
 
         //==========================
-        // VERIFICA SE É EDIÇÃO
+        //       EDIÇÃO
         //==========================
         if (getIntent().hasExtra("id")) {
             isEdit = true;
             editId = getIntent().getIntExtra("id", -1);
 
-            // 🔥 AQUI ESTAVA O ERRO — nomes corrigidos
-            edtDescricao.setText(getIntent().getStringExtra("title"));
-            edtSenha.setText(getIntent().getStringExtra("password"));
+            // ✔ Correção dos nomes enviados (descricao / senha)
+            edtDescricao.setText(getIntent().getStringExtra("descricao"));
+            edtSenha.setText(getIntent().getStringExtra("senha"));
 
             btnSalvar.setText("Atualizar");
         }
 
         //==========================
-        // BOTÃO SALVAR / ATUALIZAR
+        // SALVAR / ATUALIZAR
         //==========================
         btnSalvar.setOnClickListener(v -> {
             String desc = edtDescricao.getText().toString().trim();
@@ -76,5 +84,13 @@ public class AddEditPasswordActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // 🔒 Evita que dados fiquem na memória se o app for suspenso
+        edtSenha.setText("");
     }
 }
