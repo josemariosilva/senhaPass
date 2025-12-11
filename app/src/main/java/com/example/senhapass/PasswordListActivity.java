@@ -63,9 +63,19 @@ public class PasswordListActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     protected void onPause() {
         super.onPause();
-        finish();  // ← AQUI fecha se o app ficar em segundo plano
+
+        // Só fecha se o app realmente for para o background
+        if (!isChangingConfigurations()) {
+            if (!isFinishing()) {
+                finish();
+            }
+        }
     }
+
+
 }

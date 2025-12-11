@@ -83,11 +83,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // 🔒 limpa campos ao voltar
-        edtUser.setText("");
-        edtPass.setText("");
-    }
+   // @Override
+   // protected void onResume() {
+   //     super.onResume();
+   //     // 🔒 limpa campos ao voltar
+   //     edtUser.setText("");
+    //    edtPass.setText("");
+   // }
 }
